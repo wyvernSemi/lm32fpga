@@ -1,0 +1,71 @@
+// Format:
+// 4 byte delta time (jtag_clk count) for command (MSB), counting from the end of the last command
+// 1 byte length
+// 8 byte command: <action> <target> <hw_addr[23:16> <hw_addr[15:8]> <hw_addr[7:0]> <data[15:8]> <data[7:0]> <mode>
+// 
+// <action> : SETUP(61)  ERASE(72)  WRITE(83)   READ(94)  LCD_DAT(a5) LCD_CMD(b6)
+// <target> : LED(f0)    SEG7(e1)   PS2(d2)     FLASH(c3) SDRAM(b4)   SRAM(a5)   LCD(96)
+//            VGA(87)    SDRSEL(1f) FLSEL(2e)   EXTIO(3d) SET_REG(4c) SRSEL(5b)
+// <mode>   : OUTSEL(33) NORMAL(aa) DISPLAY(cc) BURST(ff)
+
+
+
+
+@0
+// USB_SELECT_SRAM
+//00 00 00 10
+//08
+//61 4c 12 34 56 00 a5 33
+//00 00 01 00
+//08
+//61 5b 12 34 56 00 ff 33
+
+// USB_DESELECT_SRAM
+00 00 00 10
+08
+61 5b 12 34 56 00 00 33
+
+// USB_WRITE_RAM (addr <= 0xfffc/2, data <= don't care)
+00 00 00 10
+08
+83 a5 00 7f fe 00 00 aa
+
+// SDRAM write 0x55aa to byte addres 0x00080604
+00 00 00 10
+08
+83 b4 04 03 02 55 aa aa
+
+// SDRAM write 0xcafe to byte addres 0x0123456
+00 00 00 10
+08
+83 b4 09 1a 2b ca fe aa
+
+// Setup TXD  output for SDRAM
+00 00 00 10
+08
+61 4c 12 34 56 00 b4 33
+
+// SDRAM read from byte address 0x00080604
+00 00 00 10
+08
+94 b4 04 03 02 00 00 aa
+
+// Send two bytes to flush read data
+00 00 00 10
+02
+00 00
+
+// SDRAM read from byte address 0x123456
+00 00 00 10
+08
+94 b4 09 1a 2b 00 00 aa
+
+// Send two bytes to flush read data
+00 00 00 10
+02
+00 00
+
+
+// Terminate
+ff ff ff ff
+

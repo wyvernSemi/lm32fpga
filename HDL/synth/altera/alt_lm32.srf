@@ -1,0 +1,223 @@
+{ "" "" "" "Verilog HDL or VHDL warning at CMD_Decode.v(110): object \"sel_PS2\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at uart_core.v(197): object \"RXRDY_N\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at uart_core.v(200): object \"TXRDY_N\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at intface.v(471): object \"rbr_rd_fifo\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at intface.v(501): truncated value with size 32 to match size of target (16)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Output port \"fifo_empty_thr\" at intface.v(382) has no driver" {  } {  } 0 10034 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Output port \"fifo_full_thr\" at intface.v(383) has no driver" {  } {  } 0 10034 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at rxcver.v(192): truncated value with size 32 to match size of target (16)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at rxcver.v(355): truncated value with size 32 to match size of target (4)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Output port \"rbr_fifo\" at rxcver.v(134) has no driver" {  } {  } 0 10034 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Output port \"fifo_empty\" at rxcver.v(141) has no driver" {  } {  } 0 10034 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Output port \"fifo_almost_full\" at rxcver.v(142) has no driver" {  } {  } 0 10034 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL warning at txmitt.v(159): object thr_rd_int used but never assigned" {  } {  } 0 10858 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL warning at txmitt.v(160): object thr_rd_delay used but never assigned" {  } {  } 0 10858 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at txmitt.v(175): truncated value with size 32 to match size of target (16)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at txmitt.v(373): truncated value with size 32 to match size of target (3)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Net \"thr_rd_int\" at txmitt.v(159) has no driver or initial value, using a default initial value '0'" {  } {  } 0 10030 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Net \"thr_rd_delay\" at txmitt.v(160) has no driver or initial value, using a default initial value '0'" {  } {  } 0 10030 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at timer.v(120): object \"reg_rd\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Output port \"RSTREQ_O\" at timer.v(104) has no driver" {  } {  } 0 10034 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_cpu.v(1060): created implicit net for \"load_q_m\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_cpu.v(1061): created implicit net for \"store_q_m\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_cpu.v(1319): created implicit net for \"bp_match\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_cpu.v(1320): created implicit net for \"wp_match\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_cpu.v(2079): created implicit net for \"q_d\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_cpu.v(2128): created implicit net for \"q_m\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(341): created implicit net for \"op_add\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(342): created implicit net for \"op_and\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(343): created implicit net for \"op_andhi\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(344): created implicit net for \"op_b\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(345): created implicit net for \"op_bi\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(346): created implicit net for \"op_be\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(347): created implicit net for \"op_bg\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(348): created implicit net for \"op_bge\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(349): created implicit net for \"op_bgeu\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(350): created implicit net for \"op_bgu\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(351): created implicit net for \"op_bne\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(352): created implicit net for \"op_call\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(353): created implicit net for \"op_calli\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(354): created implicit net for \"op_cmpe\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(355): created implicit net for \"op_cmpg\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(356): created implicit net for \"op_cmpge\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(357): created implicit net for \"op_cmpgeu\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(358): created implicit net for \"op_cmpgu\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(359): created implicit net for \"op_cmpne\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(361): created implicit net for \"op_divu\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(363): created implicit net for \"op_lb\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(364): created implicit net for \"op_lbu\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(365): created implicit net for \"op_lh\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(366): created implicit net for \"op_lhu\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(367): created implicit net for \"op_lw\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(369): created implicit net for \"op_modu\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(372): created implicit net for \"op_mul\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(374): created implicit net for \"op_nor\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(375): created implicit net for \"op_or\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(376): created implicit net for \"op_orhi\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(377): created implicit net for \"op_raise\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(378): created implicit net for \"op_rcsr\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(379): created implicit net for \"op_sb\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(381): created implicit net for \"op_sextb\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(382): created implicit net for \"op_sexth\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(384): created implicit net for \"op_sh\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(386): created implicit net for \"op_sl\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(388): created implicit net for \"op_sr\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(389): created implicit net for \"op_sru\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(390): created implicit net for \"op_sub\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(391): created implicit net for \"op_sw\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(392): created implicit net for \"op_user\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(393): created implicit net for \"op_wcsr\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(394): created implicit net for \"op_xnor\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(395): created implicit net for \"op_xor\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(398): created implicit net for \"arith\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(399): created implicit net for \"logical\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(400): created implicit net for \"cmp\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(403): created implicit net for \"bra\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(404): created implicit net for \"call\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(406): created implicit net for \"shift\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(416): created implicit net for \"sext\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_decoder.v(419): created implicit net for \"multiply\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_interrupt.v(166): created implicit net for \"ie_csr_read_data\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_interrupt.v(175): created implicit net for \"ip_csr_read_data\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_interrupt.v(176): created implicit net for \"im_csr_read_data\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_itlb.v(203): created implicit net for \"tlbe_match_f\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_itlb.v(208): created implicit net for \"flushing\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_dtlb.v(228): created implicit net for \"tlbe_match\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at uart_core.v(258): created implicit net for \"intr\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at uart_core.v(273): created implicit net for \"parity_even\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at uart_core.v(322): created implicit net for \"sout\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at lm32_cpu.v(495): object \"eret_m\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at lm32_cpu.v(506): object \"bret_m\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at lm32_instruction_unit.v(660): truncated value with size 32 to match size of target (30)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at lm32_decoder.v(392): object \"op_user\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at lm32_decoder.v(419): object \"multiply\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at lm32_decoder.v(597): truncated value with size 32 to match size of target (30)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at lm32_dtlb.v(160): object \"checking\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at lm32_shifter.v(149): truncated value with size 64 to match size of target (32)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at lm32_interrupt.v(166): object \"ie_csr_read_data\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at lm32_interrupt.v(175): object \"ip_csr_read_data\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at lm32_interrupt.v(176): object \"im_csr_read_data\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at lm32_interrupt.v(166): truncated value with size 32 to match size of target (1)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at lm32_interrupt.v(175): truncated value with size 32 to match size of target (1)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at lm32_interrupt.v(176): truncated value with size 32 to match size of target (1)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at lm32_cpu.v(432): object \"x_result_sel_logic_x\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Case Statement warning at lm32_debug.v(319): can't check case statement for completeness because the case expression has too many possible states" {  } {  } 0 10762 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Inferred RAM node \"lm32_top:u6\|lm32_cpu:cpu\|lm32_load_store_unit:load_store_unit\|lm32_dtlb:dtlb\|lm32_ram:data_ram\|mem_rtl_0\" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design." {  } {  } 0 276020 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Inferred RAM node \"lm32_top:u6\|lm32_cpu:cpu\|lm32_instruction_unit:instruction_unit\|lm32_icache:icache\|lm32_ram:memories\[0\].way_0_tag_ram\|mem_rtl_0\" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design." {  } {  } 0 276020 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Inferred RAM node \"lm32_top:u6\|lm32_cpu:cpu\|lm32_instruction_unit:instruction_unit\|lm32_itlb:itlb\|lm32_ram:data_ram\|mem_rtl_0\" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design." {  } {  } 0 276020 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Inferred RAM node \"lm32_top:u6\|lm32_cpu:cpu\|lm32_load_store_unit:load_store_unit\|lm32_dcache:dcache\|lm32_ram:memories\[0\].way_0_tag_ram\|mem_rtl_0\" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design." {  } {  } 0 276020 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Inferred RAM node \"lm32_top:u6\|lm32_cpu:cpu\|lm32_instruction_unit:instruction_unit\|lm32_icache:icache\|lm32_ram:memories\[0\].way_0_data_ram\|mem_rtl_0\" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design." {  } {  } 0 276020 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"CLOCK_24\[0\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"CLOCK_24\[1\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"CLOCK_27\[0\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"CLOCK_27\[1\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"EXT_CLOCK\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"KEY\[1\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"KEY\[2\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"KEY\[3\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"SW\[0\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"SW\[1\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"SW\[2\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"SW\[3\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"SW\[4\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"SW\[5\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"SW\[6\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"SW\[7\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"SW\[8\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"SW\[9\]\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"PS2_DAT\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"PS2_CLK\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "No output dependent on input pin \"AUD_ADCDAT\"" {  } {  } 0 15610 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Design contains 21 input pin(s) that do not drive logic" {  } {  } 0 21074 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Synthesized away node \"lm32_top:u6\|lm32_cpu:cpu\|lm32_multiplier:multiplier\|lpm_mult:Mult0\|mult_l8t:auto_generated\|mac_mult7\"" {  } {  } 0 14320 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Synthesized away node \"lm32_top:u6\|lm32_cpu:cpu\|lm32_multiplier:multiplier\|lpm_mult:Mult0\|mult_l8t:auto_generated\|mac_out8\"" {  } {  } 0 14320 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Synthesized away the following node(s):" {  } {  } 0 14284 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Synthesized away the following DSP element node(s):" {  } {  } 0 14285 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[0\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[1\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[2\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[3\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[4\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[5\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[6\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[7\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[8\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[9\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[10\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_ADDR\[11\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_LDQM\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_UDQM\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_WE_N\" is stuck at VCC" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_CAS_N\" is stuck at VCC" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_RAS_N\" is stuck at VCC" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_CS_N\" is stuck at VCC" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_BA_0\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_BA_1\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_CLK\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"DRAM_CKE\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[0\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[1\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[2\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[3\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[4\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[5\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[6\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[7\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[8\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[9\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[10\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[11\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[12\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[13\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[14\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[15\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[16\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[17\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[18\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[19\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[20\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_ADDR\[21\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_WE_N\" is stuck at VCC" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_RST_N\" is stuck at VCC" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_OE_N\" is stuck at VCC" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"FL_CE_N\" is stuck at VCC" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"SRAM_CE_N\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"SD_CLK\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"I2C_SCLK\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_HS\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_VS\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_R\[0\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_R\[1\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_R\[2\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_R\[3\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_G\[0\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_G\[1\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_G\[2\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_G\[3\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_B\[0\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_B\[1\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_B\[2\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"VGA_B\[3\]\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"AUD_DACDAT\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Pin \"AUD_XCK\" is stuck at GND" {  } {  } 0 13410 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Output pins are stuck at VCC or GND" {  } {  } 0 13024 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Following 101 pins have no output enable or a GND or VCC output enable - later changes to this connectivity may change fitting results" {  } {  } 0 169064 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "5 hierarchies have connectivity warnings - see the Connectivity Checks report folder" {  } {  } 0 12241 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "4 hierarchies have connectivity warnings - see the Connectivity Checks report folder" {  } {  } 0 12241 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at control_interface.v(137): truncated value with size 32 to match size of target (16)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at control_interface.v(132): truncated value with size 32 to match size of target (16)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at Sdram_Controller.v(236): truncated value with size 32 to match size of target (9)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at CMD_Decode.v(319): truncated value with size 9 to match size of target (8)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at CMD_Decode.v(318): truncated value with size 18 to match size of target (10)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at CMD_Decode.v(304): truncated value with size 9 to match size of target (8)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at CMD_Decode.v(303): truncated value with size 18 to match size of target (10)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Implicit Net warning at lm32_itlb.v(205): created implicit net for \"tlbe_match_f\"" {  } {  } 0 10236 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL assignment warning at control_interface.v(162): truncated value with size 32 to match size of target (16)" {  } {  } 0 10230 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Always Construct warning at command.v(265): inferring latch(es) for variable \"oe_shift\", which holds its previous value in one or more paths through the always construct" {  } {  } 0 10240 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Always Construct warning at command.v(265): inferring latch(es) for variable \"oe1\", which holds its previous value in one or more paths through the always construct" {  } {  } 0 10240 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL Always Construct warning at command.v(265): inferring latch(es) for variable \"oe2\", which holds its previous value in one or more paths through the always construct" {  } {  } 0 10240 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "Verilog HDL or VHDL warning at sdr_data_path.v(36): object \"DM1\" assigned a value but never read" {  } {  } 0 10036 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "*" {  } {  } 0 10335 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "*" {  } {  } 0 10222 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "*" {  } {  } 0 276020 "" 0 0 "Quartus II" 0 -1 0 ""}
+{ "" "" "" "*" {  } {  } 0 292013 "" 0 0 "Quartus II" 0 -1 0 ""}

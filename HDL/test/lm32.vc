@@ -1,0 +1,54 @@
+# =============================================================
+#  
+#  Copyright (c) 2017 Simon Southwell. All rights reserved.
+# 
+#  Date: 6th June 2017
+# 
+#  This code is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 3 of the License, or
+#  (at your option) any later version.
+# 
+#  The code is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+# 
+#  You should have received a copy of the GNU General Public License
+#  along with this code. If not, see <http://www.gnu.org/licenses/>.
+# 
+#  $Id: lm32.vc,v 1.1 2017/06/10 13:59:53 simon Exp $
+#  $Source: /home/simon/CVS/src/cpu/mico32/HDL/test/lm32.vc,v $
+# 
+# =============================================================
+
+#
+# N.B: for Modelsim paths are relative to compilation directory,
+# not local directory to this file. i.e. ../test
+#
+
+# M-Labs MMU LM32
+../../third_party/m-labs/lm32/rtl/lm32_adder.v
+../../third_party/m-labs/lm32/rtl/lm32_addsub.v
+../../third_party/m-labs/lm32/rtl/lm32_cpu.v
+../../third_party/m-labs/lm32/rtl/lm32_dcache.v
+../../third_party/m-labs/lm32/rtl/lm32_debug.v
+../../third_party/m-labs/lm32/rtl/lm32_decoder.v
+../../third_party/m-labs/lm32/rtl/lm32_dp_ram.v
+../../third_party/m-labs/lm32/rtl/lm32_icache.v
+../../third_party/m-labs/lm32/rtl/lm32_instruction_unit.v
+../../third_party/m-labs/lm32/rtl/lm32_interrupt.v
+../../third_party/m-labs/lm32/rtl/lm32_jtag.v
+../../third_party/m-labs/lm32/rtl/lm32_load_store_unit.v
+../../third_party/m-labs/lm32/rtl/lm32_logic_op.v
+../../third_party/m-labs/lm32/rtl/lm32_mc_arithmetic.v
+../../third_party/m-labs/lm32/rtl/lm32_multiplier.v
+../../third_party/m-labs/lm32/rtl/lm32_ram.v
+../../third_party/m-labs/lm32/rtl/lm32_shifter.v
+../../third_party/m-labs/lm32/rtl/lm32_itlb.v
+../../third_party/m-labs/lm32/rtl/lm32_dtlb.v
+../../third_party/m-labs/lm32/rtl/lm32_top.v
+
+# Lattice Semiconductor's peripherals
+../../third_party/lscc/micosystem/components/uart_core/rtl/uart_core.v
+../../third_party/lscc/micosystem/components/timer/rtl/timer.v

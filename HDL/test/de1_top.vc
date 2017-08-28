@@ -1,0 +1,43 @@
+# =============================================================
+#  
+#  Copyright (c) 2017 Simon Southwell. All rights reserved.
+# 
+#  Date: 6th June 2017
+# 
+#  This code is free software: you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation, either version 3 of the License, or
+#  (at your option) any later version.
+# 
+#  The code is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+# 
+#  You should have received a copy of the GNU General Public License
+#  along with this code. If not, see <http://www.gnu.org/licenses/>.
+# 
+#  $Id: de1_top.vc,v 1.3 2017/08/22 09:18:49 simon Exp $
+#  $Source: /home/simon/CVS/src/cpu/mico32/HDL/test/de1_top.vc,v $
+# 
+# =============================================================
+# Top level files for LM32 system on DE1 boards
+
+# Newly written files
+../rtl/alt_lm32.v
+../rtl/address_decode.v
+../rtl/controller.v
+../rtl/usb_jtag_cmd.v
+../rtl/wb_mux.v
+../rtl/lm32_wrap.v
+
+# Modified from DE1 example files
+../rtl/CMD_Decode.v
+../rtl/SEG7_LUT.v
+../rtl/SEG7_LUT_4.v
+../rtl/USB_JTAG.v
+../rtl/I2C_Controller.v
+../rtl/Sdram_Controller/command.v
+../rtl/Sdram_Controller/control_interface.v
+../rtl/Sdram_Controller/sdr_data_path.v
+../rtl/Sdram_Controller/Sdram_Controller.v
