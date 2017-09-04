@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this code. If not, see <http://www.gnu.org/licenses/>.
 //
-// $Id: lm32_driver.h,v 1.3 2017/07/14 12:24:34 simon Exp $
+// $Id: lm32_driver.h,v 1.4 2017/09/04 10:40:42 simon Exp $
 // $Source: /home/simon/CVS/src/cpu/mico32/HDL/driver/src/lm32_driver.h,v $
 //
 //=============================================================
@@ -149,204 +149,256 @@
 // MACROS
 // -------------------------------------------------------------------------
 
-#define USB_SET_SEG7_MASK(_val, _mask, _x, _usb) {      \
-    (_x)[0] = WRITE;                                    \
-    (_x)[1] = SEG7;                                     \
-    (_x)[2] = 0x00;                                     \
-    (_x)[3] = 0x00;                                     \
-    (_x)[4] = (_mask);                                  \
-    (_x)[5] = (char)((_val) >> 8);                      \
-    (_x)[6] = (char)(_val);                             \
-    (_x)[7] = DISPLAY;                                  \
-    (_usb)->Write_Data((_x), 8, 0, true);               \
+#define USB_PRINT_HEX(_x, _l, _c) {                         \
+   {                                                        \
+     printf("// %s\n", (_c));                               \
+     printf("00 00 00 10\n");                               \
+     printf("%02x\n", (_l));                                \
+     for (int i = 0; i < (_l); i++)                         \
+       printf ("%02x ", (_x)[i]);                           \
+     printf("\n\n");                                        \
+   }                                                        \
+}                                                           
+                                                            
+#define USB_SET_SEG7_MASK(_val, _mask, _x, _usb, _p) {      \
+    (_x)[0] = WRITE;                                        \
+    (_x)[1] = SEG7;                                         \
+    (_x)[2] = 0x00;                                         \
+    (_x)[3] = 0x00;                                         \
+    (_x)[4] = (_mask);                                      \
+    (_x)[5] = (char)((_val) >> 8);                          \
+    (_x)[6] = (char)(_val);                                 \
+    (_x)[7] = DISPLAY;                                      \
+    if (_p)                                                 \
+      USB_PRINT_HEX(_x, 8, "set SEG7")                      \
+    else                                                    \
+      (_usb)->Write_Data((_x), 8, 0, true);                 \
 }
 
-#define USB_SET_SEG7_ALT(_v3, _v2, _v1, _v0, _x, _usb) {\
-    USB_SET_SEG7_MASK((((_v3) & 0xf) << 12) |           \
-                      (((_v2) & 0xf) << 8)  |           \
-                      (((_v1) & 0xf) << 4)  |           \
-                      ((_v0)  & 0xf),                   \
-                      (((_v3) & 0x100) >> 5) |          \
-                      (((_v2) & 0x100) >> 6) |          \
-                      (((_v1) & 0x100) >> 7) |          \
-                      (((_v0) & 0x100) >> 8),           \
-                      _x, _usb);                        \
+#define USB_SET_SEG7_ALT(_v3, _v2, _v1, _v0, _x, _usb, _p) {\
+    USB_SET_SEG7_MASK((((_v3) & 0xf) << 12) |               \
+                      (((_v2) & 0xf) << 8)  |               \
+                      (((_v1) & 0xf) << 4)  |               \
+                      ((_v0)  & 0xf),                       \
+                      (((_v3) & 0x100) >> 5) |              \
+                      (((_v2) & 0x100) >> 6) |              \
+                      (((_v1) & 0x100) >> 7) |              \
+                      (((_v0) & 0x100) >> 8),               \
+                      _x, _usb, _p);                        \
+}                                                           
+                                                            
+#define USB_SET_SEG7_HEX(_val, _x, _usb, _p) {              \
+    USB_SET_SEG7_MASK(_val, 0, _x, _usb, _p);               \
+}                                                           
+                                                            
+#define USB_SET_SEG7_DEC(_val, _x, _usb, _p) {              \
+    USB_SET_SEG7_HEX(USB_DEC_TO_HEX(_val), _x, _usb, _p);   \
 }
 
-#define USB_SET_SEG7_HEX(_val, _x, _usb) {              \
-    USB_SET_SEG7_MASK(_val, 0, _x, _usb);               \
+#define USB_SELECT_SEG7(_x, _usb, _p) {                     \
+    (_x)[0] = SETUP;                                        \
+    (_x)[1] = SET_REG;                                      \
+    (_x)[2] = 0x12;                                         \
+    (_x)[3] = 0x34;                                         \
+    (_x)[4] = 0x56;                                         \
+    (_x)[5] = 0x00;                                         \
+    (_x)[6] = SEG7;                                         \
+    (_x)[7] = OUTSEL;                                       \
+    if (_p)                                                 \
+      USB_PRINT_HEX(_x, 8, "Select SEG7")                   \
+    else                                                    \
+      (_usb)->Write_Data((_x), 8, 0, true);                 \
+}                                                           
+                                                            
+#define USB_READ_SEG7( _x, _usb, _p) {                      \
+    (_x)[0] = READ;                                         \
+    (_x)[1] = SEG7;                                         \
+    (_x)[2] = 0x12;                                         \
+    (_x)[3] = 0x34;                                         \
+    (_x)[4] = 0x56;                                         \
+    (_x)[5] = 0x00;                                         \
+    (_x)[6] = 0x00;                                         \
+    (_x)[7] = NORMAL;                                       \
+    if (_p)                                                 \
+      USB_PRINT_HEX(_x, 8, "Read SEG7")                     \
+    else                                                    \
+      (_usb)->Write_Data((_x), 8, 2, true);                 \
+    Sleep(10);                                              \
+    if (_p){                                                \
+      (_x)[0] = (_x)[1] = 0;                                \
+      USB_PRINT_HEX(_x, 2, "Read bytes")}                   \
+    else                                                    \
+      (_usb)->Read_Data((_x), 2);                           \
+}                                                           
+                                                            
+#define USB_DEC_TO_HEX(_val)                                \
+    (((_val)%10)               |                            \
+    ((((_val)/10)%10) << 4)    |                            \
+    ((((_val)/100)%10) << 8)   |                            \
+    ((((_val)/1000)%10) << 12))                             \
+                                                            
+                                                            
+#define USB_SET_LEDS(_val, _led, _x, _usb, _p) {            \
+    (_led) |= (_val);                                       \
+    (_x)[0] = WRITE;                                        \
+    (_x)[1] = LED;                                          \
+    (_x)[2] = 0x00;                                         \
+    (_x)[3] = (char)((_led) >> 16);                         \
+    (_x)[4] = (char)((_led) >>  8);                         \
+    (_x)[5] = 0x00;                                         \
+    (_x)[6] = (char)(_led);                                 \
+    (_x)[7] = DISPLAY;                                      \
+    if (_p)                                                 \
+      USB_PRINT_HEX(_x, 8, "Set LEDs")                      \
+    else                                                    \
+      (_usb)->Write_Data((_x), 8, 0, true);                 \
+}                                                           
+                                                            
+                                                            
+#define USB_CLR_LEDS(_val, _led, _x, _usb, _p) {            \
+    (_led) &= ~(_val);                                      \
+    USB_SET_LEDS(0, (_led), (_x), (_usb), (_p));            \
+}                                                           
+                                                            
+#define USB_FAIL(_func_str) {                               \
+    fprintf(stderr, "USB: %s() failed\n", (_func_str));     \
+    exit(1);                                                \
+}                                                           
+                                                            
+#define USB_SELECT_SRAM(_x, _usb, _p) {                     \
+    (_x)[0] = SETUP;                                        \
+    (_x)[1] = SET_REG;                                      \
+    (_x)[2] = 0x12;                                         \
+    (_x)[3] = 0x34;                                         \
+    (_x)[4] = 0x56;                                         \
+    (_x)[5] = 0x00;                                         \
+    (_x)[6] = SRAM;                                         \
+    (_x)[7] = OUTSEL;                                       \
+    if (_p)                                                 \
+      USB_PRINT_HEX(_x, 8, "Setup SRAM")                    \
+    else                                                    \
+      (_usb)->Write_Data((_x), 8, 0, true);                 \
+    (_x)[0] = SETUP;                                        \
+    (_x)[1] = SRSEL;                                        \
+    (_x)[6] = 0xff;                                         \
+    if (_p)                                                 \
+      USB_PRINT_HEX(_x, 8, "Select SRAM")                   \
+    else                                                    \
+      (_usb)->Write_Data((_x), 8, 0, true);                 \
+}                                                           
+                                                            
+#define USB_DESELECT_SRAM(_x, _usb, _p) {                   \
+    (_x)[0] = SETUP;                                        \
+    (_x)[1] = SRSEL;                                        \
+    (_x)[2] = 0x12;                                         \
+    (_x)[3] = 0x34;                                         \
+    (_x)[4] = 0x56;                                         \
+    (_x)[5] = 0x00;                                         \
+    (_x)[6] = 0x00;                                         \
+    (_x)[7] = OUTSEL;                                       \
+    if (_p)                                                 \
+      USB_PRINT_HEX(_x, 8, "Deselect SRAM")                 \
+    else                                                    \
+      (_usb)->Write_Data((_x), 8, 0, true);                 \
 }
 
-#define USB_SET_SEG7_DEC(_val, _x, _usb) {              \
-    USB_SET_SEG7_HEX(USB_DEC_TO_HEX(_val), _x, _usb);   \
-}
-
-#define USB_SELECT_SEG7(_x, _usb) {                     \
-    (_x)[0] = SETUP;                                    \
-    (_x)[1] = SET_REG;                                  \
-    (_x)[2] = 0x12;                                     \
-    (_x)[3] = 0x34;                                     \
-    (_x)[4] = 0x56;                                     \
-    (_x)[5] = 0x00;                                     \
-    (_x)[6] = SEG7;                                     \
-    (_x)[7] = OUTSEL;                                   \
-    (_usb)->Write_Data((_x), 8, 0, true);               \
-}
-
-#define USB_READ_SEG7( _x, _usb) {                      \
-    (_x)[0] = READ;                                     \
-    (_x)[1] = SEG7;                                     \
-    (_x)[2] = 0x12;                                     \
-    (_x)[3] = 0x34;                                     \
-    (_x)[4] = 0x56;                                     \
-    (_x)[5] = 0x00;                                     \
-    (_x)[6] = 0x00;                                     \
-    (_x)[7] = NORMAL;                                   \
-    (_usb)->Write_Data((_x), 8, 2, true);               \
-    Sleep(10);                                          \
-    (_usb)->Read_Data((_x), 2);                         \
-}
-
-#define USB_DEC_TO_HEX(_val)                            \
-    (((_val)%10)               |                        \
-    ((((_val)/10)%10) << 4)    |                        \
-    ((((_val)/100)%10) << 8)   |                        \
-    ((((_val)/1000)%10) << 12))                         \
- 
-
-#define USB_SET_LEDS(_val, _led, _x, _usb) {            \
-    (_led) |= (_val);                                   \
-    (_x)[0] = WRITE;                                    \
-    (_x)[1] = LED;                                      \
-    (_x)[2] = 0x00;                                     \
-    (_x)[3] = (char)((_led) >> 16);                     \
-    (_x)[4] = (char)((_led) >>  8);                     \
-    (_x)[5] = 0x00;                                     \
-    (_x)[6] = (char)(_led);                             \
-    (_x)[7] = DISPLAY;                                  \
-    (_usb)->Write_Data((_x), 8, 0, true);               \
-}
-
-
-#define USB_CLR_LEDS(_val, _led, _x, _usb) {            \
-    (_led) &= ~(_val);                                  \
-    USB_SET_LEDS(0, (_led), (_x), (_usb));              \
-}
-
-#define USB_FAIL(_func_str) {                           \
-    fprintf(stderr, "USB: %s() failed\n", (_func_str)); \
-    exit(1);                                            \
-}
-
-#define USB_SELECT_SRAM(_x, _usb) {                     \
-    (_x)[0] = SETUP;                                    \
-    (_x)[1] = SET_REG;                                  \
-    (_x)[2] = 0x12;                                     \
-    (_x)[3] = 0x34;                                     \
-    (_x)[4] = 0x56;                                     \
-    (_x)[5] = 0x00;                                     \
-    (_x)[6] = SRAM;                                     \
-    (_x)[7] = OUTSEL;                                   \
-    (_usb)->Write_Data((_x), 8, 0, true);               \
-    (_x)[0] = SETUP;                                    \
-    (_x)[1] = SRSEL;                                    \
-    (_x)[6] = 0xff;                                     \
-    (_usb)->Write_Data((_x), 8, 0, true);               \
-}
-
-#define USB_DESELECT_SRAM(_x, _usb) {                   \
-    (_x)[0] = SETUP;                                    \
-    (_x)[1] = SRSEL;                                    \
-    (_x)[2] = 0x12;                                     \
-    (_x)[3] = 0x34;                                     \
-    (_x)[4] = 0x56;                                     \
-    (_x)[5] = 0x00;                                     \
-    (_x)[6] = 0x00;                                     \
-    (_x)[7] = OUTSEL;                                   \
-    (_usb)->Write_Data((_x), 8, 0, true);               \
-}
-
-#define USB_WRITE_SRAM_BLK(_len,_addr,_dt,_x,_usb,_fl) {\
-    (_x)[0] = WRITE;                                    \
-    (_x)[1] = SRAM;                                     \
-    (_x)[2] = (char)((_addr) >> 16);                    \
-    (_x)[3] = (char)((_addr) >> 8);                     \
-    (_x)[4] = (char)((_addr) >> 0);                     \
-    (_x)[5] = (char)((_len) >> 8);                      \
-    (_x)[6] = (char)((_len) >> 0);                      \
-    (_x)[7] = BURST;                                    \
-    (_usb)->Write_Data((_x), 8, 0, true);               \
-    (_usb)->Write_Data((_dt), (_len), 0, _fl);          \
-}
-
-#define USB_WRITE_SRAM(_val, _addr, _x, _usb) {         \
-    (_x)[0] = WRITE;                                    \
-    (_x)[1] = SRAM;                                     \
-    (_x)[2] = (char)((_addr) >> 16);                    \
-    (_x)[3] = (char)((_addr) >> 8);                     \
-    (_x)[4] = (char)((_addr) >> 0);                     \
-    (_x)[5] = (char)((_val) >> 8);                      \
-    (_x)[6] = (char)((_val) >> 0);                      \
-    (_x)[7] = NORMAL;                                   \
-    (_usb)->Write_Data((_x), 8, 0, false);              \
-}
-
-#define USB_READ_SRAM(_addr, _x, _usb) {                \
-    (_x)[0] = READ;                                     \
-    (_x)[1] = SRAM;                                     \
-    (_x)[2] = (char)((_addr) >> 16);                    \
-    (_x)[3] = (char)((_addr) >> 8);                     \
-    (_x)[4] = (char)((_addr) >> 0);                     \
-    (_x)[5] = 0x00;                                     \
-    (_x)[6] = 0x00;                                     \
-    (_x)[7] = NORMAL;                                   \
-    (_usb)->Write_Data((_x), 8, 2, true);               \
-    Sleep(10);                                          \
-    (_usb)->Read_Data((_x), 2);                         \
-}
-
-#define USB_OPEN_DEVICE(_usb) {                         \
-    if (!(_usb)->Open_Device())                         \
-    {                                                   \
-      USB_FAIL("Open_Device");                          \
-    }                                                   \
-}
-
-#define USB_RESET_DEVICE(_x, _usb) {                    \
-    if (!(_usb)->Reset_Device(_x))                      \
-    {                                                   \
-      USB_FAIL("Reset_Device");                         \
-    }                                                   \
-}
-
-#define USB_CLOSE_DEVICE(_usb) {                        \
-    if (!(_usb)->Close_Device())                        \
-    {                                                   \
-      USB_FAIL("Close_Device");                         \
-    }                                                   \
+#define USB_WRITE_SRAM_BLK(_len,_addr,_dt,_x,_usb,_fl,_p) { \
+    (_x)[0] = WRITE;                                        \
+    (_x)[1] = SRAM;                                         \
+    (_x)[2] = (char)((_addr) >> 16);                        \
+    (_x)[3] = (char)((_addr) >> 8);                         \
+    (_x)[4] = (char)((_addr) >> 0);                         \
+    (_x)[5] = (char)((_len) >> 8);                          \
+    (_x)[6] = (char)((_len) >> 0);                          \
+    (_x)[7] = BURST;                                        \
+    if (_p)                                                 \
+      USB_PRINT_HEX(_x, 8, "Write SRAM block")              \
+    else                                                    \
+      (_usb)->Write_Data((_x), 8, 0, true);                 \
+    if (_p)                                                 \
+      USB_PRINT_HEX(_dt, _len, "Write SRAM block data")     \
+    else                                                    \
+      (_usb)->Write_Data((_dt), (_len), 0, _fl);            \
+}                                                           
+                                                            
+#define USB_WRITE_SRAM(_val, _addr, _x, _usb, _p) {         \
+    (_x)[0] = WRITE;                                        \
+    (_x)[1] = SRAM;                                         \
+    (_x)[2] = (char)((_addr) >> 16);                        \
+    (_x)[3] = (char)((_addr) >> 8);                         \
+    (_x)[4] = (char)((_addr) >> 0);                         \
+    (_x)[5] = (char)((_val) >> 8);                          \
+    (_x)[6] = (char)((_val) >> 0);                          \
+    (_x)[7] = NORMAL;                                       \
+    if (_p)                                                 \
+      USB_PRINT_HEX(_x, 8, "Write SRAM")                    \
+    else                                                    \
+      (_usb)->Write_Data((_x), 8, 0, false);                \
+}                                                           
+                                                            
+#define USB_READ_SRAM(_addr, _x, _usb, _p) {                \
+    (_x)[0] = READ;                                         \
+    (_x)[1] = SRAM;                                         \
+    (_x)[2] = (char)((_addr) >> 16);                        \
+    (_x)[3] = (char)((_addr) >> 8);                         \
+    (_x)[4] = (char)((_addr) >> 0);                         \
+    (_x)[5] = 0x00;                                         \
+    (_x)[6] = 0x00;                                         \
+    (_x)[7] = NORMAL;                                       \
+    if (_p)                                                 \
+      USB_PRINT_HEX(_x, 8, "Read SRAM")                     \
+    else                                                    \
+      (_usb)->Write_Data((_x), 8, 2, true);                 \
+    Sleep(10);                                              \
+    if (_p){                                                \
+      (_x)[0] = (_x)[1] = 0;                                \
+      USB_PRINT_HEX(_x, 2, "Read data") }                   \
+    else                                                    \
+      (_usb)->Read_Data((_x), 2);                           \
+}                                                           
+                                                            
+#define USB_OPEN_DEVICE(_usb) {                             \
+    if (!(_usb)->Open_Device())                             \
+    {                                                       \
+      USB_FAIL("Open_Device");                              \
+    }                                                       \
+}                                                           
+                                                            
+#define USB_RESET_DEVICE(_x, _usb) {                        \
+    if (!(_usb)->Reset_Device(_x))                          \
+    {                                                       \
+      USB_FAIL("Reset_Device");                             \
+    }                                                       \
+}                                                           
+                                                            
+#define USB_CLOSE_DEVICE(_usb) {                            \
+    if (!(_usb)->Close_Device())                            \
+    {                                                       \
+      USB_FAIL("Close_Device");                             \
+    }                                                       \
 }
 
 // Handy predefined messages for 7 segment display
-#define USB_SEG7_ALL_OFF(_x, _usb) {USB_SET_SEG7_ALT(USB_SEG7_OFF, USB_SEG7_OFF, USB_SEG7_OFF, USB_SEG7_OFF, (_x), (_usb));}
-#define USB_SEG7_ALL_ON(_x, _usb)  {USB_SET_SEG7_ALT(USB_SEG7_8,   USB_SEG7_8,   USB_SEG7_8,   USB_SEG7_8,   (_x), (_usb));}
-#define USB_SEG7_PASS(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_P,   USB_SEG7_A,   USB_SEG7_S,   USB_SEG7_S,   (_x), (_usb));}
-#define USB_SEG7_FAIL(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_F,   USB_SEG7_A,   USB_SEG7_I,   USB_SEG7_L,   (_x), (_usb));}
-#define USB_SEG7_ERR(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_E,   USB_SEG7_r,   USB_SEG7_r,   USB_SEG7_OFF, (_x), (_usb));}
-#define USB_SEG7_END(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_E,   USB_SEG7_n,   USB_SEG7_D,   USB_SEG7_OFF, (_x), (_usb));}
-#define USB_SEG7_STOP(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_S,   USB_SEG7_t,   USB_SEG7_o,   USB_SEG7_P,   (_x), (_usb));}
-#define USB_SEG7_HALT(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_H,   USB_SEG7_a,   USB_SEG7_l,   USB_SEG7_t,   (_x), (_usb));}
-#define USB_SEG7_DONE(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_D,   USB_SEG7_o,   USB_SEG7_n,   USB_SEG7_e,   (_x), (_usb));}
-#define USB_SEG7_RUN(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_r,   USB_SEG7_u,   USB_SEG7_n,   USB_SEG7_OFF, (_x), (_usb));}
-#define USB_SEG7_CODE(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_C,   USB_SEG7_o,   USB_SEG7_d,   USB_SEG7_e,   (_x), (_usb));}
-#define USB_SEG7_INIT(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_I,   USB_SEG7_n,   USB_SEG7_I,   USB_SEG7_t,   (_x), (_usb));}
-#define USB_SEG7_LOAD(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_L,   USB_SEG7_o,   USB_SEG7_a,   USB_SEG7_d,   (_x), (_usb));}
-#define USB_SEG7_HELP(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_H,   USB_SEG7_E,   USB_SEG7_L,   USB_SEG7_P,   (_x), (_usb));}
-#define USB_SEG7_INFO(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_I,   USB_SEG7_n,   USB_SEG7_F,   USB_SEG7_O,   (_x), (_usb));}
-#define USB_SEG7_GET(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_g,   USB_SEG7_e,   USB_SEG7_t,   USB_SEG7_OFF, (_x), (_usb));}
-#define USB_SEG7_PUT(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_P,   USB_SEG7_u,   USB_SEG7_t,   USB_SEG7_OFF, (_x), (_usb));}
-#define USB_SEG7_PUSH(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_P,   USB_SEG7_u,   USB_SEG7_S,   USB_SEG7_H,   (_x), (_usb));}
-#define USB_SEG7_POP(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_P,   USB_SEG7_O,   USB_SEG7_P,   USB_SEG7_OFF, (_x), (_usb));}
-#define USB_SEG7_GO(_x, _usb)      {USB_SET_SEG7_ALT(USB_SEG7_g,   USB_SEG7_o,   USB_SEG7_OFF, USB_SEG7_OFF, (_x), (_usb));}
-#define USB_SEG7_BUSY(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_b,   USB_SEG7_u,   USB_SEG7_S,   USB_SEG7_y,   (_x), (_usb));}
-#define USB_SEG7_GONE(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_g,   USB_SEG7_o,   USB_SEG7_n,   USB_SEG7_e,   (_x), (_usb));}
+#define USB_SEG7_ALL_OFF(_x, _usb) {USB_SET_SEG7_ALT(USB_SEG7_OFF, USB_SEG7_OFF, USB_SEG7_OFF, USB_SEG7_OFF, (_x), (_usb), (_p));}
+#define USB_SEG7_ALL_ON(_x, _usb)  {USB_SET_SEG7_ALT(USB_SEG7_8,   USB_SEG7_8,   USB_SEG7_8,   USB_SEG7_8,   (_x), (_usb), (_p));}
+#define USB_SEG7_PASS(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_P,   USB_SEG7_A,   USB_SEG7_S,   USB_SEG7_S,   (_x), (_usb), (_p));}
+#define USB_SEG7_FAIL(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_F,   USB_SEG7_A,   USB_SEG7_I,   USB_SEG7_L,   (_x), (_usb), (_p));}
+#define USB_SEG7_ERR(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_E,   USB_SEG7_r,   USB_SEG7_r,   USB_SEG7_OFF, (_x), (_usb), (_p));}
+#define USB_SEG7_END(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_E,   USB_SEG7_n,   USB_SEG7_D,   USB_SEG7_OFF, (_x), (_usb), (_p));}
+#define USB_SEG7_STOP(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_S,   USB_SEG7_t,   USB_SEG7_o,   USB_SEG7_P,   (_x), (_usb), (_p));}
+#define USB_SEG7_HALT(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_H,   USB_SEG7_a,   USB_SEG7_l,   USB_SEG7_t,   (_x), (_usb), (_p));}
+#define USB_SEG7_DONE(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_D,   USB_SEG7_o,   USB_SEG7_n,   USB_SEG7_e,   (_x), (_usb), (_p));}
+#define USB_SEG7_RUN(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_r,   USB_SEG7_u,   USB_SEG7_n,   USB_SEG7_OFF, (_x), (_usb), (_p));}
+#define USB_SEG7_CODE(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_C,   USB_SEG7_o,   USB_SEG7_d,   USB_SEG7_e,   (_x), (_usb), (_p));}
+#define USB_SEG7_INIT(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_I,   USB_SEG7_n,   USB_SEG7_I,   USB_SEG7_t,   (_x), (_usb), (_p));}
+#define USB_SEG7_LOAD(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_L,   USB_SEG7_o,   USB_SEG7_a,   USB_SEG7_d,   (_x), (_usb), (_p));}
+#define USB_SEG7_HELP(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_H,   USB_SEG7_E,   USB_SEG7_L,   USB_SEG7_P,   (_x), (_usb), (_p));}
+#define USB_SEG7_INFO(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_I,   USB_SEG7_n,   USB_SEG7_F,   USB_SEG7_O,   (_x), (_usb), (_p));}
+#define USB_SEG7_GET(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_g,   USB_SEG7_e,   USB_SEG7_t,   USB_SEG7_OFF, (_x), (_usb), (_p));}
+#define USB_SEG7_PUT(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_P,   USB_SEG7_u,   USB_SEG7_t,   USB_SEG7_OFF, (_x), (_usb), (_p));}
+#define USB_SEG7_PUSH(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_P,   USB_SEG7_u,   USB_SEG7_S,   USB_SEG7_H,   (_x), (_usb), (_p));}
+#define USB_SEG7_POP(_x, _usb)     {USB_SET_SEG7_ALT(USB_SEG7_P,   USB_SEG7_O,   USB_SEG7_P,   USB_SEG7_OFF, (_x), (_usb), (_p));}
+#define USB_SEG7_GO(_x, _usb)      {USB_SET_SEG7_ALT(USB_SEG7_g,   USB_SEG7_o,   USB_SEG7_OFF, USB_SEG7_OFF, (_x), (_usb), (_p));}
+#define USB_SEG7_BUSY(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_b,   USB_SEG7_u,   USB_SEG7_S,   USB_SEG7_y,   (_x), (_usb), (_p));}
+#define USB_SEG7_GONE(_x, _usb)    {USB_SET_SEG7_ALT(USB_SEG7_g,   USB_SEG7_o,   USB_SEG7_n,   USB_SEG7_e,   (_x), (_usb), (_p));}
 #endif

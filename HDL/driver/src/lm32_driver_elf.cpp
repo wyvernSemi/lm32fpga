@@ -21,7 +21,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this code. If not, see <http://www.gnu.org/licenses/>.
 //
-// $Id: lm32_driver_elf.cpp,v 1.2 2017/07/14 12:25:05 simon Exp $
+// $Id: lm32_driver_elf.cpp,v 1.3 2017/09/04 10:40:42 simon Exp $
 // $Source: /home/simon/CVS/src/cpu/mico32/HDL/driver/src/lm32_driver_elf.cpp,v $
 //
 //=============================================================
@@ -54,7 +54,6 @@ void lm32_read_elf (const char * const filename, USB_JTAG* p_usb1)
     char        buf2[sizeof(Elf32_Phdr)*ELF_MAX_NUM_PHDR];
     const char* ptr;
     FILE*       elf_fp;
-
 
     // Open program file ready for loading
     if ((elf_fp = fopen(filename, "rb")) == NULL)
@@ -153,7 +152,7 @@ void lm32_read_elf (const char * const filename, USB_JTAG* p_usb1)
 
         for (i = 0; i < sec_len/2; i++, hwaddr++)
         {
-          USB_WRITE_SRAM(fbuf[i], hwaddr, ubuf, p_usb1);
+          USB_WRITE_SRAM(fbuf[i], hwaddr, ubuf, p_usb1, false);
         }
 
         bytecount += sec_len;

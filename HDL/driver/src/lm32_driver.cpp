@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this code. If not, see <http://www.gnu.org/licenses/>.
 //
-// $Id: lm32_driver.cpp,v 1.6 2017/07/14 12:23:21 simon Exp $
+// $Id: lm32_driver.cpp,v 1.7 2017/09/04 10:40:42 simon Exp $
 // $Source: /home/simon/CVS/src/cpu/mico32/HDL/driver/src/lm32_driver.cpp,v $
 //
 //=============================================================
@@ -86,16 +86,17 @@ void open_device(USB_JTAG* p_usb)
 // get_options()
 // -------------------------------------------------------------------------
 
-static void get_options(int argc, char** argv, char** fname, int* delay, int* no_load, bool* no_wait)
+static void get_options(int argc, char** argv, char** fname, int* delay, int* no_load, bool* no_wait, bool* generate_hex)
 {
     int option;
 
-    *fname   = DEFAULT_PROG_NAME;
-    *delay   = DEFAULT_DELAY;
-    *no_load = 0;
-    *no_wait = false;
+    *fname        = DEFAULT_PROG_NAME;
+    *delay        = DEFAULT_DELAY;
+    *no_load      = 0;
+    *no_wait      = false;
+    *generate_hex = false;
 
-    while ((option = getopt(argc, argv, "f:d:nlwh")) != EOF)
+    while ((option = getopt(argc, argv, "f:d:nlwHh")) != EOF)
     {
         switch(option)
         {
@@ -114,6 +115,9 @@ static void get_options(int argc, char** argv, char** fname, int* delay, int* no
         case 'w':
             *no_wait = true;
             break;
+        case 'H':
+            *generate_hex = true;
+            break;
         case 'h':
         case '?':
         default:
@@ -123,6 +127,7 @@ static void get_options(int argc, char** argv, char** fname, int* delay, int* no
                 "    -n No load of program, only execute (default false)\n"
                 "    -l Only load program, don't execute (default false)\n"
                 "    -w Don't wait for program termination (default wait)\n"
+                "    -H Generate HEX output (default off)\n"
                 "\n",
                 DEFAULT_PROG_NAME);
             exit(1);
@@ -143,36 +148,40 @@ int main (int argc, char** argv)
   int           delay;
   int           no_load;
   bool          no_wait;
+  bool          generate_hex;
 
   // Process command line options
-  get_options(argc, argv, &fname, &delay, &no_load, &no_wait);
+  get_options(argc, argv, &fname, &delay, &no_load, &no_wait, &generate_hex);
 
   // Open and initialise device
   p_usb1 = new USB_JTAG;
 
   // Open up communications with JTAG over USB
-  open_device(p_usb1);
-
-  // Select JTAG access to SRAM
-  USB_SELECT_SRAM(buf, p_usb1);
-
-  // Load test program to memory
-  if (no_load < 1)
+  if (!generate_hex)
   {
-    lm32_read_elf (fname, p_usb1);
+    open_device(p_usb1);
+
+    // Select JTAG access to SRAM
+    USB_SELECT_SRAM(buf, p_usb1, generate_hex);
+
+    // Load test program to memory
+    if (no_load < 1)
+    {
+      lm32_read_elf (fname, p_usb1);
+    }
   }
 
   if (no_load >= 0)
   {
 
     // Deselect JTAG SRAM, giving access to CPU
-    USB_DESELECT_SRAM(buf, p_usb1);
+    USB_DESELECT_SRAM(buf, p_usb1, generate_hex);
     
     // Enable processor (resetcpu deasserted)
-    USB_WRITE_SRAM(DONT_CARE, (STATUS_BYTE_ADDR >> 1), buf, p_usb1);
+    USB_WRITE_SRAM(DONT_CARE, (STATUS_BYTE_ADDR >> 1), buf, p_usb1, generate_hex);
 
     // Select SEG7 for reading
-    USB_SELECT_SEG7(buf, p_usb1);
+    USB_SELECT_SEG7(buf, p_usb1, generate_hex);
 
     if (!no_wait)
     {
@@ -180,9 +189,9 @@ int main (int argc, char** argv)
       do
       {
           // Read the status word from memory
-          USB_READ_SEG7(buf, p_usb1);
+          USB_READ_SEG7(buf, p_usb1, generate_hex);
           status = buf[0] | (buf[1] << 8);
-      } while (status == 0);
+      } while (status == 0 && !generate_hex);
       
       // Wait some time (ms), if specified
       if (delay)
@@ -191,24 +200,35 @@ int main (int argc, char** argv)
       }
       
       // Select the SRAM for JTAG access once again
-      USB_SELECT_SRAM(buf, p_usb1);
+      USB_SELECT_SRAM(buf, p_usb1, generate_hex);
       
       // Disable processor (asserting resetcpu)
-      USB_WRITE_SRAM(DONT_CARE, (STATUS_BYTE_ADDR >> 1), buf, p_usb1);
+      USB_WRITE_SRAM(DONT_CARE, (STATUS_BYTE_ADDR >> 1), buf, p_usb1, generate_hex);
       
       // Read the status word from memory
-      USB_READ_SRAM((STATUS_BYTE_ADDR >> 1), buf, p_usb1);
+      USB_READ_SRAM((STATUS_BYTE_ADDR >> 1), buf, p_usb1, generate_hex);
       status = buf[1] | (buf[0] << 8);
-      USB_READ_SRAM(((STATUS_BYTE_ADDR+2) >> 1), buf, p_usb1);
+      USB_READ_SRAM(((STATUS_BYTE_ADDR+2) >> 1), buf, p_usb1, generate_hex);
       status = (status << 16) | buf[1] | (buf[0] << 8);
       
       // Print out status
-      printf("RAM 0xfffc = 0x%08x\n", status & 0xffff);
+      if (!generate_hex)
+      {
+        printf("RAM 0xfffc = 0x%08x\n", status & 0xffff);
+      }
     }
   }
 
   // Close device
-  USB_CLOSE_DEVICE(p_usb1);
+  if (generate_hex)
+  {
+      // Send termination command
+      printf("// Terminate\nff ff ff ff\n");
+  }
+  else
+  {
+    USB_CLOSE_DEVICE(p_usb1);
+  }
 
   // Clean up
   delete p_usb1;
